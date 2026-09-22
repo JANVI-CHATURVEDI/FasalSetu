@@ -1,0 +1,2391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>FasalSetu | Smart Market Linkage for Farmers</title>
+
+  <meta
+    name="description"
+    content="FasalSetu connects farmers with verified buyers, live mandi prices, logistics support, and transparent market opportunities."
+  />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      --primary: #176b3a;
+      --primary-dark: #0c4728;
+      --primary-light: #eaf5e9;
+      --cream: #fbfaf5;
+      --surface: #ffffff;
+      --surface-soft: #f5f7f1;
+      --text: #172019;
+      --muted: #68736b;
+      --border: #e0e8dd;
+      --gold: #e6a936;
+      --danger: #c54e42;
+      --shadow: 0 18px 45px rgba(22, 61, 37, 0.11);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      color: var(--text);
+      background: var(--cream);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .container {
+      width: min(1180px, 92%);
+      margin: auto;
+    }
+
+    .section {
+      padding: 85px 0;
+    }
+
+    .section-header {
+      max-width: 620px;
+      margin-bottom: 42px;
+    }
+
+    .section-header.center {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .eyebrow {
+      color: var(--primary);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.7px;
+      text-transform: uppercase;
+      margin-bottom: 13px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: "Playfair Display", serif;
+      line-height: 1.15;
+    }
+
+    h1 {
+      font-size: clamp(42px, 6vw, 72px);
+      letter-spacing: -2.5px;
+    }
+
+    h2 {
+      font-size: clamp(32px, 4vw, 48px);
+      letter-spacing: -1.2px;
+    }
+
+    h3 {
+      font-size: 22px;
+    }
+
+    .section-header h2 span,
+    .hero h1 span {
+      color: var(--primary);
+    }
+
+    .section-header p {
+      color: var(--muted);
+      margin-top: 15px;
+      font-size: 15px;
+    }
+
+    .btn {
+      min-height: 45px;
+      border: none;
+      border-radius: 9px;
+      padding: 12px 19px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      transition: 0.25s ease;
+    }
+
+    .btn svg {
+      width: 17px;
+      height: 17px;
+    }
+
+    .btn-primary {
+      color: white;
+      background: var(--primary);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      color: var(--primary-dark);
+      background: white;
+      border: 1px solid #a8bca9;
+    }
+
+    .btn-secondary:hover {
+      background: var(--primary-light);
+    }
+
+    .btn-light {
+      color: var(--primary-dark);
+      background: white;
+    }
+
+    .btn-light:hover {
+      background: #eaf5e9;
+    }
+
+    .icon {
+      width: 18px;
+      height: 18px;
+      stroke-width: 2;
+    }
+
+    /* NAVIGATION */
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(251, 250, 245, 0.94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(224, 232, 221, 0.8);
+    }
+
+    .nav-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-mark {
+      width: 39px;
+      height: 39px;
+      display: grid;
+      place-items: center;
+      color: white;
+      background: var(--primary);
+      border-radius: 12px;
+    }
+
+    .brand-mark svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .brand-name {
+      font-family: "Playfair Display", serif;
+      font-size: 25px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .brand-name span {
+      color: var(--primary);
+    }
+
+    .brand-tagline {
+      display: block;
+      color: var(--muted);
+      font-size: 9px;
+      margin-top: 5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      align-items: center;
+      color: #39453d;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .nav-actions .icon-btn {
+      width: 39px;
+      height: 39px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      color: var(--primary);
+      background: transparent;
+    }
+
+    .icon-btn svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .menu-btn {
+      display: none;
+      border: none;
+      color: var(--primary);
+      background: transparent;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 650px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(251, 250, 245, 1) 0%,
+          rgba(251, 250, 245, 0.96) 30%,
+          rgba(251, 250, 245, 0.56) 59%,
+          rgba(251, 250, 245, 0.1) 100%
+        ),
+        url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=85")
+        center / cover;
+    }
+
+    .hero-content {
+      max-width: 650px;
+      padding: 80px 0;
+    }
+
+    .hero-description {
+      max-width: 550px;
+      color: #465248;
+      margin: 22px 0 29px;
+      font-size: 17px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 33px;
+    }
+
+    .hero-benefits {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    .benefit {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .benefit-icon {
+      width: 35px;
+      height: 35px;
+      display: grid;
+      place-items: center;
+      color: var(--primary);
+      background: #e2f0df;
+      border-radius: 50%;
+    }
+
+    .benefit-icon svg {
+      width: 17px;
+      height: 17px;
+    }
+
+    .benefit small {
+      display: block;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 400;
+    }
+
+    .hero-note {
+      position: absolute;
+      right: 8%;
+      top: 22%;
+      max-width: 160px;
+      color: var(--primary-dark);
+      font-family: "Playfair Display", serif;
+      font-size: 25px;
+      font-style: italic;
+      transform: rotate(-7deg);
+    }
+
+    /* SEARCH */
+
+    .search-wrapper {
+      position: relative;
+      z-index: 5;
+      margin-top: -60px;
+    }
+
+    .search-card {
+      overflow: hidden;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      box-shadow: var(--shadow);
+    }
+
+    .search-tabs {
+      display: flex;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .search-tab {
+      border: none;
+      padding: 17px 23px;
+      color: var(--muted);
+      background: transparent;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .search-tab.active {
+      color: var(--primary);
+      border-bottom: 2px solid var(--primary);
+    }
+
+    .search-form {
+      display: grid;
+      grid-template-columns: 1.2fr 1.2fr 1fr auto;
+      gap: 10px;
+      padding: 18px;
+    }
+
+    .field {
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 0 13px;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      background: white;
+    }
+
+    .field svg {
+      flex: 0 0 auto;
+      width: 17px;
+      color: var(--primary);
+    }
+
+    .field input,
+    .field select {
+      width: 100%;
+      border: none;
+      outline: none;
+      color: #526057;
+      background: transparent;
+      font-size: 12px;
+    }
+
+    .search-message {
+      display: none;
+      margin: 0 18px 18px;
+      padding: 13px 15px;
+      border-radius: 9px;
+      color: var(--primary-dark);
+      background: var(--primary-light);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .search-message.error {
+      color: #8a342d;
+      background: #fff0ee;
+    }
+
+    /* CROP CATEGORIES */
+
+    .crop-strip {
+      padding: 34px 0 45px;
+      background: #fffdf8;
+    }
+
+    .crop-list {
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .crop-list::-webkit-scrollbar {
+      display: none;
+    }
+
+    .crop-card {
+      flex: 0 0 112px;
+      padding: 14px 8px;
+      text-align: center;
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      background: white;
+      cursor: pointer;
+      transition: 0.25s;
+    }
+
+    .crop-card:hover,
+    .crop-card.selected {
+      border-color: var(--primary);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(23, 107, 58, 0.1);
+    }
+
+    .crop-card svg {
+      width: 25px;
+      height: 25px;
+      margin-bottom: 7px;
+      color: var(--primary);
+    }
+
+    .crop-card p {
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    /* VALUE PROPOSITION */
+
+    .value-section {
+      background: #fffdf8;
+    }
+
+    .value-grid {
+      display: grid;
+      grid-template-columns: 0.85fr 1.55fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .feature-card {
+      padding: 25px 22px;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      background: white;
+      transition: 0.25s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+    }
+
+    .feature-icon {
+      width: 43px;
+      height: 43px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 17px;
+      color: var(--primary);
+      background: var(--primary-light);
+      border-radius: 11px;
+    }
+
+    .feature-icon svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .feature-card h3 {
+      margin-bottom: 8px;
+    }
+
+    .feature-card p {
+      min-height: 54px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .feature-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 13px;
+      color: var(--primary);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .feature-link svg {
+      width: 14px;
+    }
+
+    /* MARKET PRICES */
+
+    .market-section {
+      background: var(--surface-soft);
+    }
+
+    .market-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      margin-bottom: 24px;
+    }
+
+    .live-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--primary);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #2eab5d;
+      box-shadow: 0 0 0 5px rgba(46, 171, 93, 0.12);
+    }
+
+    .market-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+
+    .market-card {
+      padding: 19px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: white;
+    }
+
+    .market-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .market-crop {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .market-crop svg {
+      width: 20px;
+      color: var(--primary);
+    }
+
+    .trend {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .trend.up {
+      color: #238544;
+    }
+
+    .trend.down {
+      color: var(--danger);
+    }
+
+    .market-price {
+      margin-bottom: 6px;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .market-meta {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .market-source {
+      margin-top: 13px;
+      padding-top: 11px;
+      border-top: 1px solid #edf0ea;
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .market-empty {
+      display: none;
+      padding: 25px;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .api-note {
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .api-note a {
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    /* IMPACT */
+
+    .impact-section {
+      color: white;
+      background: var(--primary-dark);
+    }
+
+    .impact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .impact-section .eyebrow {
+      color: #a8d4a4;
+    }
+
+    .impact-section p {
+      max-width: 500px;
+      color: #d5e5d2;
+      margin: 19px 0 25px;
+      font-size: 15px;
+    }
+
+    .impact-list {
+      display: grid;
+      gap: 13px;
+      margin-bottom: 28px;
+    }
+
+    .impact-point {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      color: #e4f1df;
+      font-size: 13px;
+    }
+
+    .impact-point svg {
+      width: 18px;
+      color: #98d695;
+    }
+
+    .impact-visual {
+      min-height: 350px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      background:
+        linear-gradient(90deg, rgba(13, 72, 40, 0.18), rgba(13, 72, 40, 0.02)),
+        url("https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&w=900&q=80")
+        center / cover;
+    }
+
+    .impact-stat {
+      position: absolute;
+      right: 24px;
+      bottom: 24px;
+      max-width: 215px;
+      padding: 17px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 13px;
+      color: white;
+      background: rgba(13, 72, 40, 0.77);
+      backdrop-filter: blur(8px);
+    }
+
+    .impact-stat strong {
+      display: block;
+      font-family: "Playfair Display", serif;
+      font-size: 24px;
+    }
+
+    .impact-stat span {
+      font-size: 11px;
+      color: #d7ead4;
+    }
+
+    /* BUYERS */
+
+    .buyers-section {
+      background: white;
+    }
+
+    .buyers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .buyer-card {
+      padding: 22px;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      background: #fff;
+    }
+
+    .buyer-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .buyer-icon {
+      width: 43px;
+      height: 43px;
+      display: grid;
+      place-items: center;
+      color: var(--primary);
+      background: var(--primary-light);
+      border-radius: 12px;
+    }
+
+    .buyer-icon svg {
+      width: 22px;
+    }
+
+    .verified {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      color: #247f43;
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .verified svg {
+      width: 14px;
+    }
+
+    .buyer-card h3 {
+      font-size: 20px;
+      margin-bottom: 5px;
+    }
+
+    .buyer-card p {
+      min-height: 45px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .buyer-details {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      padding-top: 14px;
+      margin-top: 15px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    /* SELL FORM */
+
+    .sell-section {
+      background: var(--cream);
+    }
+
+    .sell-box {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 45px;
+      align-items: center;
+      padding: 45px;
+      border-radius: 20px;
+      background: var(--primary-light);
+    }
+
+    .sell-box p {
+      color: var(--muted);
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .sell-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .form-control {
+      width: 100%;
+      min-height: 47px;
+      padding: 0 13px;
+      border: 1px solid #d4e2d0;
+      border-radius: 9px;
+      outline: none;
+      color: #526057;
+      background: white;
+      font-size: 12px;
+    }
+
+    .sell-form textarea {
+      grid-column: span 2;
+      min-height: 95px;
+      padding: 13px;
+      resize: vertical;
+    }
+
+    .sell-form .btn {
+      grid-column: span 2;
+      justify-self: start;
+    }
+
+    /* STATS */
+
+    .stats {
+      padding: 31px 0;
+      background: #f2eee2;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      text-align: center;
+    }
+
+    .stat {
+      border-right: 1px solid #dbd8cb;
+    }
+
+    .stat:last-child {
+      border-right: none;
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--primary);
+      font-size: 27px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    /* NEWSLETTER */
+
+    .newsletter-section {
+      background: #fffdf8;
+    }
+
+    .newsletter-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+      padding: 32px;
+      border-radius: 17px;
+      background: #eef6e9;
+    }
+
+    .newsletter-box p {
+      color: var(--muted);
+      margin-top: 6px;
+      font-size: 13px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 7px;
+      min-width: min(420px, 100%);
+    }
+
+    .newsletter-form input {
+      width: 100%;
+      min-height: 45px;
+      padding: 0 12px;
+      border: 1px solid #d7e2d2;
+      border-radius: 8px;
+      outline: none;
+      font-size: 12px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 30px 0;
+      border-top: 1px solid var(--border);
+      background: #fffdf8;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+
+    .socials {
+      display: flex;
+      gap: 9px;
+    }
+
+    .socials a {
+      width: 32px;
+      height: 32px;
+      display: grid;
+      place-items: center;
+      color: var(--primary);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+    }
+
+    .socials svg {
+      width: 15px;
+      height: 15px;
+    }
+
+    .copyright {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    /* TOAST */
+
+    .toast {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 100;
+      display: none;
+      max-width: 340px;
+      padding: 14px 17px;
+      color: white;
+      background: var(--primary-dark);
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 1000px) {
+      .nav-links {
+        gap: 14px;
+      }
+
+      .nav-actions .btn {
+        padding: 10px 13px;
+      }
+
+      .search-form {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .search-form .btn {
+        width: 100%;
+      }
+
+      .market-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .value-grid,
+      .impact-grid,
+      .sell-box {
+        grid-template-columns: 1fr;
+      }
+
+      .sell-box {
+        gap: 25px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .section {
+        padding: 60px 0;
+      }
+
+      .navbar {
+        position: relative;
+      }
+
+      .nav-links,
+      .nav-actions {
+        display: none;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .nav-inner.menu-open {
+        position: relative;
+      }
+
+      .nav-inner.menu-open .nav-links {
+        position: absolute;
+        top: 76px;
+        left: 0;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+        padding: 22px 4%;
+        background: var(--cream);
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav-inner.menu-open .nav-actions {
+        position: absolute;
+        top: 365px;
+        left: 4%;
+        right: 4%;
+        display: flex;
+        padding-bottom: 20px;
+        background: var(--cream);
+      }
+
+      .hero {
+        min-height: 630px;
+        background:
+          linear-gradient(
+            180deg,
+            rgba(251, 250, 245, 0.97) 0%,
+            rgba(251, 250, 245, 0.87) 56%,
+            rgba(251, 250, 245, 0.3) 100%
+          ),
+          url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1000&q=85")
+          center / cover;
+      }
+
+      .hero-content {
+        padding: 55px 0;
+      }
+
+      .hero-note {
+        display: none;
+      }
+
+      .hero-benefits {
+        gap: 12px;
+      }
+
+      .search-wrapper {
+        margin-top: -45px;
+      }
+
+      .search-tabs {
+        overflow-x: auto;
+      }
+
+      .search-tab {
+        flex: 0 0 auto;
+        padding: 15px 14px;
+        font-size: 11px;
+      }
+
+      .search-form {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-grid,
+      .buyers-grid,
+      .market-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .impact-visual {
+        min-height: 270px;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 23px 12px;
+      }
+
+      .stat {
+        border-right: none;
+      }
+
+      .sell-box {
+        padding: 27px 20px;
+      }
+
+      .sell-form {
+        grid-template-columns: 1fr;
+      }
+
+      .sell-form textarea,
+      .sell-form .btn {
+        grid-column: auto;
+      }
+
+      .newsletter-box {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 25px 20px;
+      }
+
+      .newsletter-form {
+        width: 100%;
+        min-width: 0;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="navbar">
+    <div class="container nav-inner" id="navInner">
+
+      <a href="#home" class="brand">
+        <div class="brand-mark">
+          <i data-lucide="sprout"></i>
+        </div>
+
+        <div>
+          <div class="brand-name">
+            <span>Fasal</span>Setu
+          </div>
+          <small class="brand-tagline">
+            Smart market linkage for farmers
+          </small>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#prices">Market Prices</a>
+        <a href="#buyers">Find Buyers</a>
+        <a href="#sell">Sell Crop</a>
+        <a href="#solution">Our Solution</a>
+        <a href="#about">About</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="icon-btn" title="Search">
+          <i data-lucide="search"></i>
+        </button>
+
+        <button class="btn btn-secondary" id="loginBtn">
+          Login
+        </button>
+
+        <button class="btn btn-primary" id="signupBtn">
+          Get Started
+        </button>
+      </div>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+        <i data-lucide="menu"></i>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-content">
+
+          <p class="eyebrow">India's farmer-first market network</p>
+
+          <h1>
+            Sell smarter with
+            <span>better market access.</span>
+          </h1>
+
+          <p class="hero-description">
+            FasalSetu helps farmers discover mandi prices, compare nearby
+            markets, connect with verified buyers, and make better selling
+            decisions from one simple platform.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#sell" class="btn btn-primary">
+              Sell Your Crop
+              <i data-lucide="arrow-right"></i>
+            </a>
+
+            <a href="#prices" class="btn btn-secondary">
+              Explore Live Prices
+              <i data-lucide="bar-chart-3"></i>
+            </a>
+          </div>
+
+          <div class="hero-benefits">
+            <div class="benefit">
+              <div class="benefit-icon">
+                <i data-lucide="scale"></i>
+              </div>
+              <div>
+                Transparent prices
+                <small>Compare before selling</small>
+              </div>
+            </div>
+
+            <div class="benefit">
+              <div class="benefit-icon">
+                <i data-lucide="badge-check"></i>
+              </div>
+              <div>
+                Verified buyers
+                <small>Reduce information gaps</small>
+              </div>
+            </div>
+
+            <div class="benefit">
+              <div class="benefit-icon">
+                <i data-lucide="truck"></i>
+              </div>
+              <div>
+                Better logistics
+                <small>Plan your market journey</small>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="hero-note">
+          Better information.
+          <br />
+          Better decisions.
+        </div>
+      </div>
+    </section>
+
+    <!-- SEARCH PANEL -->
+
+    <section class="search-wrapper" aria-label="Market search">
+      <div class="container">
+        <div class="search-card">
+
+          <div class="search-tabs">
+            <button class="search-tab active" data-mode="price">
+              Find Best Price
+            </button>
+
+            <button class="search-tab" data-mode="buyer">
+              Find Buyers
+            </button>
+
+            <button class="search-tab" data-mode="sell">
+              Sell Your Crop
+            </button>
+          </div>
+
+          <form class="search-form" id="marketSearchForm">
+
+            <label class="field">
+              <i data-lucide="wheat"></i>
+
+              <select id="cropSelect" required>
+                <option value="">Select crop</option>
+                <option value="Wheat">Wheat</option>
+                <option value="Rice">Rice</option>
+                <option value="Maize">Maize</option>
+                <option value="Soybean">Soybean</option>
+                <option value="Cotton">Cotton</option>
+                <option value="Potato">Potato</option>
+                <option value="Tomato">Tomato</option>
+                <option value="Onion">Onion</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <i data-lucide="map-pin"></i>
+              <input
+                id="locationInput"
+                type="text"
+                placeholder="Enter city or district"
+                value="Kanpur"
+                required
+              />
+            </label>
+
+            <label class="field">
+              <i data-lucide="calendar-days"></i>
+              <input id="dateInput" type="date" />
+            </label>
+
+            <button class="btn btn-primary" type="submit">
+              Search Market
+              <i data-lucide="search"></i>
+            </button>
+
+          </form>
+
+          <div class="search-message" id="searchMessage"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CROP CATEGORIES -->
+
+    <section class="crop-strip">
+      <div class="container">
+        <div class="crop-list">
+
+          <div class="crop-card" data-crop="Wheat">
+            <i data-lucide="wheat"></i>
+            <p>Wheat</p>
+          </div>
+
+          <div class="crop-card" data-crop="Rice">
+            <i data-lucide="sprout"></i>
+            <p>Rice</p>
+          </div>
+
+          <div class="crop-card" data-crop="Maize">
+            <i data-lucide="leaf"></i>
+            <p>Maize</p>
+          </div>
+
+          <div class="crop-card" data-crop="Soybean">
+            <i data-lucide="circle-dot"></i>
+            <p>Soybean</p>
+          </div>
+
+          <div class="crop-card" data-crop="Cotton">
+            <i data-lucide="cloud"></i>
+            <p>Cotton</p>
+          </div>
+
+          <div class="crop-card" data-crop="Potato">
+            <i data-lucide="circle"></i>
+            <p>Potato</p>
+          </div>
+
+          <div class="crop-card" data-crop="Tomato">
+            <i data-lucide="apple"></i>
+            <p>Tomato</p>
+          </div>
+
+          <div class="crop-card" data-crop="Onion">
+            <i data-lucide="layers-3"></i>
+            <p>Onion</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SOLUTION -->
+
+    <section class="section value-section" id="solution">
+      <div class="container value-grid">
+
+        <div>
+          <p class="eyebrow">Designed for the real farmer journey</p>
+
+          <div class="section-header">
+            <h2>
+              From price discovery
+              <span>to final sale.</span>
+            </h2>
+
+            <p>
+              Farmers often lose value because reliable prices, verified buyers,
+              transportation, and payment information are fragmented. FasalSetu
+              brings these steps together in one transparent workflow.
+            </p>
+          </div>
+
+          <a href="#sell" class="btn btn-secondary">
+            Start with your crop
+            <i data-lucide="arrow-right"></i>
+          </a>
+        </div>
+
+        <div class="feature-grid">
+
+          <article class="feature-card">
+            <div class="feature-icon">
+              <i data-lucide="chart-no-axes-combined"></i>
+            </div>
+
+            <h3>Live price discovery</h3>
+
+            <p>
+              Compare modal, minimum, and maximum prices across nearby markets.
+            </p>
+
+            <a class="feature-link" href="#prices">
+              View market prices
+              <i data-lucide="arrow-up-right"></i>
+            </a>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">
+              <i data-lucide="badge-check"></i>
+            </div>
+
+            <h3>Verified buyer network</h3>
+
+            <p>
+              Help farmers discover reliable traders, processors, retailers,
+              and institutional buyers.
+            </p>
+
+            <a class="feature-link" href="#buyers">
+              Explore buyers
+              <i data-lucide="arrow-up-right"></i>
+            </a>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">
+              <i data-lucide="route"></i>
+            </div>
+
+            <h3>Market-distance comparison</h3>
+
+            <p>
+              Compare expected selling value with transportation and distance
+              before choosing a market.
+            </p>
+
+            <a class="feature-link" href="#prices">
+              Compare markets
+              <i data-lucide="arrow-up-right"></i>
+            </a>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">
+              <i data-lucide="bell-ring"></i>
+            </div>
+
+            <h3>Price alerts</h3>
+
+            <p>
+              Receive important price movement and buyer opportunity alerts on
+              email or mobile channels.
+            </p>
+
+            <a class="feature-link" href="#alerts">
+              Set an alert
+              <i data-lucide="arrow-up-right"></i>
+            </a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- MARKET PRICES -->
+
+    <section class="section market-section" id="prices">
+      <div class="container">
+
+        <div class="section-header">
+          <p class="eyebrow">Price discovery dashboard</p>
+
+          <h2>
+            Know the market
+            <span>before you sell.</span>
+          </h2>
+
+          <p>
+            See indicative mandi prices and compare market opportunities by
+            crop and location.
+          </p>
+        </div>
+
+        <div class="market-toolbar">
+          <div class="live-status">
+            <span class="live-dot"></span>
+            <span id="marketStatus">Loading market data...</span>
+          </div>
+
+          <a
+            class="btn btn-secondary"
+            href="https://enam.gov.in/dashboard/live_price"
+            target="_blank"
+            rel="noopener"
+          >
+            Open eNAM
+            <i data-lucide="external-link"></i>
+          </a>
+        </div>
+
+        <div class="market-grid" id="marketGrid"></div>
+
+        <div class="market-empty" id="marketEmpty">
+          No live data was returned. Showing sample market data for demo use.
+        </div>
+
+        <p class="api-note">
+          Data source:
+          <a
+            href="https://enam.gov.in/dashboard/live_price"
+            target="_blank"
+            rel="noopener"
+          >
+            eNAM Live Price Information
+          </a>
+          and
+          <a
+            href="https://agmarknet.gov.in/"
+            target="_blank"
+            rel="noopener"
+          >
+            Agmarknet
+          </a>.
+          For production use, connect your backend to the official data source
+          and cache responses server-side.
+        </p>
+      </div>
+    </section>
+
+    <!-- IMPACT -->
+
+    <section class="section impact-section" id="about">
+      <div class="container impact-grid">
+
+        <div>
+          <p class="eyebrow">Why this matters</p>
+
+          <h2>
+            Stronger price discovery means stronger farmer decisions.
+          </h2>
+
+          <p>
+            FasalSetu is designed to reduce information asymmetry between
+            farmers and buyers. Instead of depending on a single local
+            channel, farmers can compare options and choose where and when to
+            sell.
+          </p>
+
+          <div class="impact-list">
+            <div class="impact-point">
+              <i data-lucide="check-circle-2"></i>
+              Transparent market information
+            </div>
+
+            <div class="impact-point">
+              <i data-lucide="check-circle-2"></i>
+              Better buyer visibility
+            </div>
+
+            <div class="impact-point">
+              <i data-lucide="check-circle-2"></i>
+              Reduced dependency on intermediaries
+            </div>
+
+            <div class="impact-point">
+              <i data-lucide="check-circle-2"></i>
+              Improved planning for transport and payments
+            </div>
+          </div>
+
+          <a href="#sell" class="btn btn-light">
+            Create a crop listing
+            <i data-lucide="arrow-right"></i>
+          </a>
+        </div>
+
+        <div class="impact-visual">
+          <div class="impact-stat">
+            <strong>One platform.</strong>
+            <span>
+              Market prices, buyer discovery, logistics planning, and farmer
+              alerts.
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- BUYERS -->
+
+    <section class="section buyers-section" id="buyers">
+      <div class="container">
+
+        <div class="section-header center">
+          <p class="eyebrow">Buyer discovery</p>
+
+          <h2>
+            Find buyers looking
+            <span>for your produce.</span>
+          </h2>
+
+          <p>
+            Build trust through verification, transparent requirements, and
+            clear purchase details.
+          </p>
+        </div>
+
+        <div class="buyers-grid">
+
+          <article class="buyer-card">
+            <div class="buyer-head">
+              <div class="buyer-icon">
+                <i data-lucide="factory"></i>
+              </div>
+
+              <span class="verified">
+                <i data-lucide="badge-check"></i>
+                Verified
+              </span>
+            </div>
+
+            <h3>Agro processors</h3>
+
+            <p>
+              Source consistent-quality crops directly from farmer groups and
+              local producers.
+            </p>
+
+            <div class="buyer-details">
+              <span>Wheat, Maize</span>
+              <span>Uttar Pradesh</span>
+            </div>
+          </article>
+
+          <article class="buyer-card">
+            <div class="buyer-head">
+              <div class="buyer-icon">
+                <i data-lucide="store"></i>
+              </div>
+
+              <span class="verified">
+                <i data-lucide="badge-check"></i>
+                Verified
+              </span>
+            </div>
+
+            <h3>Retail aggregators</h3>
+
+            <p>
+              Connect with buyers who need graded fruits, vegetables, pulses,
+              and grains.
+            </p>
+
+            <div class="buyer-details">
+              <span>Vegetables, Fruits</span>
+              <span>North India</span>
+            </div>
+          </article>
+
+          <article class="buyer-card">
+            <div class="buyer-head">
+              <div class="buyer-icon">
+                <i data-lucide="shopping-bag"></i>
+              </div>
+
+              <span class="verified">
+                <i data-lucide="badge-check"></i>
+                Verified
+              </span>
+            </div>
+
+            <h3>Institutional buyers</h3>
+
+            <p>
+              Discover bulk procurement opportunities for hotels, institutions,
+              and food businesses.
+            </p>
+
+            <div class="buyer-details">
+              <span>Bulk orders</span>
+              <span>Pan India</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SELL CROP -->
+
+    <section class="section sell-section" id="sell">
+      <div class="container">
+
+        <div class="sell-box">
+
+          <div>
+            <p class="eyebrow">List your produce</p>
+
+            <h2>
+              Turn your harvest
+              <span>into an opportunity.</span>
+            </h2>
+
+            <p>
+              Share basic crop details and get connected with suitable buyers.
+              This prototype can later be connected to your Django API,
+              farmer-verification workflow, storage system, and notification
+              service.
+            </p>
+          </div>
+
+          <form class="sell-form" id="sellForm">
+
+            <input
+              class="form-control"
+              type="text"
+              id="farmerName"
+              placeholder="Farmer name"
+              required
+            />
+
+            <input
+              class="form-control"
+              type="tel"
+              id="farmerPhone"
+              placeholder="Mobile number"
+              required
+            />
+
+            <select class="form-control" id="sellCrop" required>
+              <option value="">Select crop</option>
+              <option>Wheat</option>
+              <option>Rice</option>
+              <option>Maize</option>
+              <option>Soybean</option>
+              <option>Cotton</option>
+              <option>Potato</option>
+              <option>Tomato</option>
+              <option>Onion</option>
+            </select>
+
+            <input
+              class="form-control"
+              type="number"
+              id="quantity"
+              placeholder="Quantity in quintals"
+              min="1"
+              required
+            />
+
+            <input
+              class="form-control"
+              type="text"
+              id="sellLocation"
+              placeholder="Village / district"
+              required
+            />
+
+            <select class="form-control" id="quality">
+              <option value="">Quality grade</option>
+              <option>Standard</option>
+              <option>Premium</option>
+              <option>Organic</option>
+              <option>Not sure</option>
+            </select>
+
+            <textarea
+              class="form-control"
+              id="sellNotes"
+              placeholder="Additional details, expected price, harvest date, etc."
+            ></textarea>
+
+            <button class="btn btn-primary" type="submit">
+              Submit Crop Listing
+              <i data-lucide="send"></i>
+            </button>
+
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS -->
+
+    <section class="stats">
+      <div class="container stats-grid">
+
+        <div class="stat">
+          <strong>25+</strong>
+          <span>Crop categories</span>
+        </div>
+
+        <div class="stat">
+          <strong>500+</strong>
+          <span>Target verified buyers</span>
+        </div>
+
+        <div class="stat">
+          <strong>100%</strong>
+          <span>Price transparency focus</span>
+        </div>
+
+        <div class="stat">
+          <strong>Pan India</strong>
+          <span>Scalable market network</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ALERTS -->
+
+    <section class="section newsletter-section" id="alerts">
+      <div class="container">
+
+        <div class="newsletter-box">
+
+          <div>
+            <p class="eyebrow">Market alerts</p>
+
+            <h3>Get price and buyer updates.</h3>
+
+            <p>
+              Receive important crop-price movements and buyer opportunities.
+            </p>
+          </div>
+
+          <form class="newsletter-form" id="newsletterForm">
+            <input
+              type="email"
+              placeholder="Enter your email address"
+              required
+            />
+
+            <button class="btn btn-primary" type="submit">
+              Subscribe
+            </button>
+          </form>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+
+      <a href="#home" class="brand">
+        <div class="brand-mark">
+          <i data-lucide="sprout"></i>
+        </div>
+
+        <div>
+          <div class="brand-name">
+            <span>Fasal</span>Setu
+          </div>
+          <small class="brand-tagline">
+            Smart market linkage for farmers
+          </small>
+        </div>
+      </a>
+
+      <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#solution">Solution</a>
+        <a href="#prices">Prices</a>
+        <a href="#buyers">Buyers</a>
+        <a href="#sell">Sell Crop</a>
+      </div>
+
+      <div class="socials">
+        <a href="#" aria-label="Instagram">
+          <i data-lucide="instagram"></i>
+        </a>
+
+        <a href="#" aria-label="Facebook">
+          <i data-lucide="facebook"></i>
+        </a>
+
+        <a href="#" aria-label="LinkedIn">
+          <i data-lucide="linkedin"></i>
+        </a>
+      </div>
+
+      <div class="copyright">
+        Built for farmers. Built for India.
+      </div>
+
+    </div>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    lucide.createIcons();
+
+    const API_BASE =
+      "https://k14y5popkj.execute-api.ap-south-1.amazonaws.com/stage/commodities";
+
+    const menuBtn = document.getElementById("menuBtn");
+    const navInner = document.getElementById("navInner");
+
+    menuBtn.addEventListener("click", () => {
+      navInner.classList.toggle("menu-open");
+
+      menuBtn.innerHTML = navInner.classList.contains("menu-open")
+        ? '<i data-lucide="x"></i>'
+        : '<i data-lucide="menu"></i>';
+
+      lucide.createIcons();
+    });
+
+    const toast = document.getElementById("toast");
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.style.display = "block";
+
+      setTimeout(() => {
+        toast.style.display = "none";
+      }, 3200);
+    }
+
+    const tabs = document.querySelectorAll(".search-tab");
+    let selectedMode = "price";
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        tabs.forEach((item) => item.classList.remove("active"));
+
+        tab.classList.add("active");
+        selectedMode = tab.dataset.mode;
+
+        const button = document.querySelector(
+          "#marketSearchForm button[type='submit']"
+        );
+
+        if (selectedMode === "price") {
+          button.innerHTML =
+            'Search Market <i data-lucide="search"></i>';
+        } else if (selectedMode === "buyer") {
+          button.innerHTML =
+            'Find Buyers <i data-lucide="users"></i>';
+        } else {
+          button.innerHTML =
+            'List Your Crop <i data-lucide="package-plus"></i>';
+        }
+
+        lucide.createIcons();
+      });
+    });
+
+    const cropCards = document.querySelectorAll(".crop-card");
+    const cropSelect = document.getElementById("cropSelect");
+
+    cropCards.forEach((card) => {
+      card.addEventListener("click", () => {
+        cropCards.forEach((item) => item.classList.remove("selected"));
+
+        card.classList.add("selected");
+        cropSelect.value = card.dataset.crop;
+
+        document
+          .querySelector(".search-card")
+          .scrollIntoView({ behavior: "smooth", block: "center" });
+      });
+    });
+
+    const demoMarketData = [
+      {
+        crop: "Wheat",
+        market: "Kanpur",
+        modalPrice: 2350,
+        minPrice: 2200,
+        maxPrice: 2475,
+        change: 2.1,
+        trend: "up"
+      },
+      {
+        crop: "Rice",
+        market: "Lucknow",
+        modalPrice: 2180,
+        minPrice: 2050,
+        maxPrice: 2290,
+        change: -1.2,
+        trend: "down"
+      },
+      {
+        crop: "Maize",
+        market: "Agra",
+        modalPrice: 1920,
+        minPrice: 1800,
+        maxPrice: 2040,
+        change: 3.4,
+        trend: "up"
+      },
+      {
+        crop: "Soybean",
+        market: "Indore",
+        modalPrice: 4300,
+        minPrice: 4120,
+        maxPrice: 4480,
+        change: 1.4,
+        trend: "up"
+      }
+    ];
+
+    const cropIconMap = {
+      Wheat: "wheat",
+      Rice: "sprout",
+      Maize: "leaf",
+      Soybean: "circle-dot",
+      Cotton: "cloud",
+      Potato: "circle",
+      Tomato: "apple",
+      Onion: "layers-3"
+    };
+
+    function normaliseMarketItem(item) {
+      return {
+        crop:
+          item.commodity ||
+          item.Commodity ||
+          item.crop ||
+          item.name ||
+          "Unknown crop",
+
+        market:
+          item.market ||
+          item.Market ||
+          item.apmc ||
+          item.APMC ||
+          "Nearby market",
+
+        modalPrice: Number(
+          item.modalPrice ||
+          item.modal_price ||
+          item["Model Price"] ||
+          item.price ||
+          0
+        ),
+
+        minPrice: Number(
+          item.minPrice ||
+          item.min_price ||
+          item["Min Price"] ||
+          0
+        ),
+
+        maxPrice: Number(
+          item.maxPrice ||
+          item.max_price ||
+          item["Max Price"] ||
+          0
+        ),
+
+        change: Number(item.change || 0),
+        trend: Number(item.change || 0) >= 0 ? "up" : "down"
+      };
+    }
+
+    function formatPrice(value) {
+      if (!value || Number.isNaN(value)) {
+        return "—";
+      }
+
+      return `₹${Number(value).toLocaleString("en-IN")}`;
+    }
+
+    function renderMarketCards(items) {
+      const marketGrid = document.getElementById("marketGrid");
+      const marketEmpty = document.getElementById("marketEmpty");
+
+      marketGrid.innerHTML = "";
+
+      if (!items || items.length === 0) {
+        marketEmpty.style.display = "block";
+        return;
+      }
+
+      marketEmpty.style.display = "none";
+
+      items.slice(0, 8).forEach((item) => {
+        const cropIcon = cropIconMap[item.crop] || "sprout";
+        const trendClass = item.trend === "down" ? "down" : "up";
+        const trendSymbol = item.trend === "down" ? "↓" : "↑";
+
+        const card = document.createElement("article");
+        card.className = "market-card";
+
+        card.innerHTML = `
+          <div class="market-card-top">
+            <div class="market-crop">
+              <i data-lucide="${cropIcon}"></i>
+              ${item.crop}
+            </div>
+
+            <span class="trend ${trendClass}">
+              ${trendSymbol} ${Math.abs(item.change || 0).toFixed(1)}%
+            </span>
+          </div>
+
+          <div class="market-price">
+            ${formatPrice(item.modalPrice)}
+            <small style="font-size:11px;color:#68736b;">/ quintal</small>
+          </div>
+
+          <div class="market-meta">
+            Min ${formatPrice(item.minPrice)} · Max ${formatPrice(item.maxPrice)}
+          </div>
+
+          <div class="market-source">
+            <i data-lucide="map-pin" style="width:12px;height:12px;"></i>
+            ${item.market}
+          </div>
+        `;
+
+        marketGrid.appendChild(card);
+      });
+
+      lucide.createIcons();
+    }
+
+    async function fetchMarketData(crop, location) {
+      const marketStatus = document.getElementById("marketStatus");
+
+      marketStatus.textContent = "Fetching current market data...";
+
+      const url =
+        `${API_BASE}?radius=100` +
+        `&place=${encodeURIComponent(location)}` +
+        "&type=current";
+
+      try {
+        const response = await fetch(url);
+
+        if (!response.ok) {
+          throw new Error("Market API request failed");
+        }
+
+        const data = await response.json();
+
+        let items = [];
+
+        if (Array.isArray(data)) {
+          items = data;
+        } else if (Array.isArray(data.data)) {
+          items = data.data;
+        } else if (Array.isArray(data.results)) {
+          items = data.results;
+        } else {
+          items = Object.values(data).filter((value) => {
+            return typeof value === "object";
+          });
+        }
+
+        const normalized = items
+          .map(normaliseMarketItem)
+          .filter((item) => {
+            if (!crop) {
+              return true;
+            }
+
+            return item.crop
+              .toLowerCase()
+              .includes(crop.toLowerCase());
+          });
+
+        if (normalized.length > 0) {
+          renderMarketCards(normalized);
+
+          marketStatus.textContent =
+            `Live market data for ${location}`;
+        } else {
+          renderMarketCards(demoMarketData);
+
+          marketStatus.textContent =
+            "Demo data shown because no matching record was returned";
+        }
+      } catch (error) {
+        console.warn(error);
+
+        renderMarketCards(demoMarketData);
+
+        marketStatus.textContent =
+          "Demo data shown because the public API is unavailable";
+      }
+    }
+
+    const marketSearchForm = document.getElementById("marketSearchForm");
+
+    marketSearchForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const crop = document.getElementById("cropSelect").value;
+      const location = document.getElementById("locationInput").value.trim();
+      const searchMessage = document.getElementById("searchMessage");
+
+      if (!crop || !location) {
+        searchMessage.className = "search-message error";
+        searchMessage.textContent =
+          "Please select a crop and enter your location.";
+        searchMessage.style.display = "block";
+        return;
+      }
+
+      searchMessage.className = "search-message";
+      searchMessage.style.display = "block";
+
+      if (selectedMode === "price") {
+        searchMessage.textContent =
+          `Searching mandi prices for ${crop} near ${location}...`;
+
+        await fetchMarketData(crop, location);
+
+        document
+          .getElementById("prices")
+          .scrollIntoView({ behavior: "smooth" });
+      }
+
+      if (selectedMode === "buyer") {
+        searchMessage.textContent =
+          `Finding verified ${crop} buyers near ${location}...`;
+
+        document
+          .getElementById("buyers")
+          .scrollIntoView({ behavior: "smooth" });
+      }
+
+      if (selectedMode === "sell") {
+        searchMessage.textContent =
+          `Opening crop listing form for ${crop}...`;
+
+        document.getElementById("sellCrop").value = crop;
+
+        document
+          .getElementById("sell")
+          .scrollIntoView({ behavior: "smooth" });
+      }
+    });
+
+    document
+      .getElementById("sellForm")
+      .addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const name = document.getElementById("farmerName").value;
+        const crop = document.getElementById("sellCrop").value;
+        const quantity = document.getElementById("quantity").value;
+
+        showToast(
+          `Thank you ${name}. Your ${quantity} quintal ${crop} listing has been created in demo mode.`
+        );
+
+        event.target.reset();
+      });
+
+    document
+      .getElementById("newsletterForm")
+      .addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        showToast(
+          "You are subscribed to FasalSetu market alerts."
+        );
+
+        event.target.reset();
+      });
+
+    document
+      .getElementById("loginBtn")
+      .addEventListener("click", () => {
+        showToast("Login screen can be connected to your authentication API.");
+      });
+
+    document
+      .getElementById("signupBtn")
+      .addEventListener("click", () => {
+        document
+          .getElementById("sell")
+          .scrollIntoView({ behavior: "smooth" });
+      });
+
+    renderMarketCards(demoMarketData);
+  </script>
+
+</body>
+</html>
